@@ -1,0 +1,28 @@
+
+<div class="col-sm-8 col-sm-offset-2">    
+    
+    <div class="page-header"><h1>Login</h1></div>   
+    
+    <form name="userForm" novalidate> 
+
+        <!-- EMAIL -->
+        <div class="form-group" ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }">
+            <label>Email</label>
+            <input type="email" name="email" class="form-control" ng-model="email" placeholder="Email">
+             <p ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="help-block">Enter a valid email.</p>
+        </div>
+
+        <!--Password-->
+        <div class="form-group" ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }">
+            <label>Password</label>
+            <input type="password" name="password" class="form-control" ng-model="password" placeholder="Password">
+             <p ng-show="userForm.password.$invalid && !userForm.password.$pristine" class="help-block">Enter a valid password.</p>
+            <p class="alert alert-danger" ng-hide="!err">{{err}}</p>
+        </div>
+        
+        <!-- SUBMIT BUTTON -->
+        <a  ng-click="validateUser()" class="btn btn-primary" ng-disabled="userForm.$invalid">Login</a>
+        
+    </form>
+
+</div><!-- col-sm-8 -->

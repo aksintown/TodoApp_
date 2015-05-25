@@ -1,0 +1,121 @@
+<a  href="#1" class="btn btn-primary">Back to Login</a>
+<div class="container">
+	<h1>
+		Task Management:
+	</h1>	
+	<table class="table table-hover table-striped">
+		<tr>
+			
+			<td class="col-md-4">
+				<b>Task</b>
+			</td>
+			<td class="col-md-2">
+				<b>Time</b>
+			</td>
+			<td class="col-md-2">
+				<b>Resources</b>
+			</td>
+			<td class="col-md-2">
+			</td>
+			<td class="col-md-2">
+			</td>
+			<td class="col-md-1">
+			</td>
+
+		</tr>
+		
+		<tr ng-repeat="user in Users track by $index" id="id-{{$index}}">
+
+			
+		   	<td ng-show="!user.editing" class="col-md-2">
+		      	{{user.task}}
+		    </td>
+		    <td ng-show="!user.editing" class="col-md-1">
+		    	{{user.time}}
+			</td>
+			<td ng-show="!user.editing" class="col-md-2">
+			 	{{user.email.join(', ')}}
+		      	
+			</td>
+			<td ng-show="!user.editing" class="col-md-1">
+				<button class="btn btn-success" ng-click="Edit($index)">
+					Edit
+				</button>
+			</td>
+			<td ng-show="!user.editing" class="col-md-1">
+				<button class="btn btn-danger" ng-click="Delete($index)">
+					Delete
+				</button>
+			</td>
+			<td ng-show="!user.editing" class="col-md-1">
+			</td>
+
+			<!--USER EDITING BELOW-->
+
+			
+			
+			<td ng-show="user.editing" class="col-md-2">
+				<input placeholder="Task" class="form-control" ng-model="Users[$index].task" value="user.task">
+			</td>
+			<td ng-show="user.editing" class="col-md-1">
+				<input placeholder="Time in hrs" class="form-control" ng-model="Users[$index].time" value="user.time">
+			</td>
+			<td ng-show="user.editing" class="col-md-2">
+				<ui-select id="email-{{$index}}" multiple tagging tagging-label="false" ng-model="Users[$index].email" theme="bootstrap" ng-disabled="disabled" class="col-md-12">
+					<ui-select-match placeholder="Select resource...">
+						{{$item}}
+					</ui-select-match>
+					<ui-select-choices repeat="email in emails | filter:$select.search">
+								{{email}}
+					</ui-select-choices>
+				</ui-select>
+			</td>
+			<td ng-show="user.editing" class="col-md-1">
+				<button ng-click="Save($index)" class="btn btn-success">
+					Save
+				</button>
+			</td>
+			<td ng-show="user.editing" class="col-md-1">
+			</td>
+			<td ng-show="user.editing" class="col-md-1">
+			</td>
+		</tr>
+		<tr ng-show="registring">
+			
+			<td class="col-md-2">
+				<input class="form-control"  ng-model="userCreation.task" placeholder="Task">
+			</td>
+			<td class="col-md-1">      	    
+				<input class="form-control"  ng-model="userCreation.time" placeholder="Time">
+			</td>
+			<td class="col-md-2">
+				<ui-select multiple tagging tagging-label="false" id="email_input" ng-model="userCreation.email" theme="bootstrap" ng-disabled="disabled">
+					<ui-select-match placeholder="Select resources...">
+						{{$item}}
+					</ui-select-match>
+					<ui-select-choices repeat="email in emails | filter:$select.search">
+								{{email}}
+					</ui-select-choices>
+				</ui-select>   
+			</td>			
+			<td class="col-md-1">
+				<button type="button" ng-click="AddToArray()" class="btn btn-primary">
+					Add
+				</button>
+			</td>
+		</tr>
+	</table>
+			
+	<div>
+      <p class="warning" ng-show="!err"></p>
+		<div class="row">
+			<div class="col-md-offset-1">
+                <p class="alert alert-danger" ng-hide="!err">{{err}}</p>
+				<button ng-show="!registring" ng-click="Add()" class="btn btn-primary btn-lg">	
+					Add user
+				</button>                
+			</div>
+		</div>
+        
+	</div>
+</div>

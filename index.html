@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">
+	</script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+	<script src="libraries/angular/angular.min.js">
+	</script>
+ 	 <script src="libraries/angular-route/angular-route.min.js">
+ 	 </script> 	 
+		<link rel="stylesheet" href="libraries/select.min.css">
+	 	 <script src="libraries/select.min.js">
+	 	 </script>
+
+ 	 <script src="app.js">
+	</script>	
+	<script src="route.js">
+	</script>
+    <script src="userdata.js">
+	</script>
+    <script src="controller.js">
+	</script>
+     <script src="service.js">
+	</script>
+	<style>
+		.editing-true
+		{
+			display: none;
+			color: red;
+		}
+		.show-field-false
+		{
+			display: none;
+		}
+	</style>
+	<body ng-app="App">
+		<div ng-view>
+		</div>        
+	</body>
+</html>
