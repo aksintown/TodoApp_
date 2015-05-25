@@ -62,14 +62,16 @@ App.controller('User', ['$scope','Users','customService',function ($scope, Users
 		$scope.Users[index].editing = false;
 		$('#role-'+index + ' input').val("");//Clear the fole input field 
 	}
-    $scope.filterUser = function(Users)
-    {
-    var user = $.grep(Users, function(element, index){
-  return element.email.toLowerCase() === customService.emailId.toLowerCase();       
- 
-});
-        console.log(user);
-         return user[0];
-     }
+         $scope.filterUser = function (data) {      
+        var user = $.grep(data.email, function (element, index) {
+            return element.toLowerCase() === customService.emailId.toLowerCase();
+        });
+        if (typeof (user) != undefined && user.length > 0) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 }]);
 
